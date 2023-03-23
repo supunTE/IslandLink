@@ -1,8 +1,18 @@
 {
-  "plugins": ["stylelint-order"],
+  "plugins": ["stylelint-prettier", "stylelint-order"],
   "defaultSeverity": "error",
-  "extends": ["stylelint-config-standard-scss"],
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-prettier/recommended",
+    "stylelint-config-standard"
+  ],
   "rules": {
+    "prettier/prettier": [
+      true,
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "declaration-empty-line-before": null,
     "order/order": [
       "custom-properties",

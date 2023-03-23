@@ -1,4 +1,10 @@
 {
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  "css.validate": false,
+  "scss.validate": false,
+  "stylelint.validate": ["css", "scss"],
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "[scss]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+  }
 }

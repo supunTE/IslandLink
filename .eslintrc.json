@@ -1,0 +1,17 @@
+{
+  "extends": ["eslint:recommended", "prettier"],
+  "plugins": ["prettier"],
+  "editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll.eslint"],
+  "rules": {
+    "curly": ["error", "all"],
+    "max-nested-callbacks": ["error", 3],
+    "prefer-const": "error",
+    "arrow-parens": ["error", "always"],
+    "semi": ["error", "always"],
+    "no-var": "error",
+    "no-console": "error",
+    "no-unused-vars": "error",
+    "no-duplicate-imports": "error",
+    "prettier/prettier": ["error"]
+  }
+}

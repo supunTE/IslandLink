@@ -1,5 +1,5 @@
 {
-  "extends": ["eslint:recommended", "prettier"],
+  "extends": ["mantine", "eslint:recommended", "prettier"],
   "plugins": ["prettier"],
   "editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll.eslint"],
   "rules": {

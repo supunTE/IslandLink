@@ -1,11 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.scss'
+import Router from './router'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return <div className="app"></div>
+  return (
+    <div className="app">
+      <Router />
+    </div>
+  )
 }
 
 export default App

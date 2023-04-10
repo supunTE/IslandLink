@@ -1,7 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Quicksand:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Quicksand:wght@500;400&display=swap');
 
 @mixin heading-large {
   font-family: Poppins, sans-serif;
   font-size: 28px;
+  font-weight: 500;
+}
+
+@mixin heading-medium {
+  font-family: Poppins, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+@mixin heading-small {
+  font-family: Poppins, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+@mixin label-large {
+  font-family: Quicksand, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+@mixin label-medium {
+  font-family: Quicksand, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@mixin label-small {
+  font-family: Quicksand, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@mixin title-large {
+  font-family: Poppins, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+@mixin title-medium {
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@mixin title-small {
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@mixin title-extra-small {
+  font-family: Poppins, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+@mixin paragraph-medium {
+  font-family: Quicksand, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@mixin paragraph-small {
+  font-family: Quicksand, sans-serif;
+  font-size: 12px;
   font-weight: 500;
 }

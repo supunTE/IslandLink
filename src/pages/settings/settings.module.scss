@@ -1,0 +1,94 @@
+@use '../../scss/colors.scss';
+@use '../../scss/fonts.scss';
+@use '../../scss/animation.scss';
+
+.heading {
+  color: colors.$sky;
+}
+
+/* For settings card */
+.settings_card {
+  background-color: colors.$tea;
+  width: 100%;
+  height: 35%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0 0 0.75rem 0.75rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.settings_card section {
+  padding-bottom: 0.5rem;
+}
+
+.settings_card section img {
+  border-radius: 50%;
+  height: 6em;
+  width: 6em;
+  object-fit: cover;
+}
+
+.label_set {
+  color: colors.$white;
+}
+
+.user_name {
+  @include fonts.label-medium;
+}
+
+.user_id {
+  @include fonts.label-small;
+}
+
+.card_button {
+  color: colors.$black;
+}
+
+.button_set {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+}
+
+#btn_edit {
+  background: colors.$paddy;
+}
+
+#btn_signout {
+  background: colors.$danger;
+}
+
+/*For settings content*/
+
+.ui_heading {
+  background-color: colors.$white;
+}
+.settings_heading {
+  @include fonts.title-large;
+  padding: 0.4em 0.8em;
+}
+.catogary {
+  @include fonts.paragraph-medium;
+  padding: 0.6em 1.2em;
+  background: colors.$paddy;
+  border-radius: 1rem;
+}
+.ui_content {
+  background-color: colors.$white;
+}
+.content {
+  @include fonts.paragraph-medium;
+  padding: 0.5em 1.2em;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  transition: animation.$background-transition;
+  border-radius: 1rem;
+}
+.content:hover {
+  cursor: pointer;
+  background: colors.$grey;
+}

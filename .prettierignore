@@ -2,4 +2,3 @@ build
 coverage
 public
 node_modules
-*.scss

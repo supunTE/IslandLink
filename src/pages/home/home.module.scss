@@ -1,3 +1,206 @@
+@use '../../scss/colors.scss';
+@use '../../scss/fonts.scss';
+
+.home {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
 .heading {
-    font-size: 2em;
+  @include fonts.heading-large;
+  color: colors.$danger;
+}
+
+.home_card {
+  background-color: colors.$ocean;
+  border-radius: 1.5rem;
+  margin-top: 1rem;
+}
+
+.weather_card {
+  background-color: colors.$forest;
+  color: colors.$white;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  position: relative;
+}
+
+.top_bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  transform: translateY(-50%);
+  left: 0;
+  padding: 0 1.5em;
+  width: 100%;
+}
+
+.user_avatar {
+  position: relative;
+  min-width: 50px;
+  width: 25%;
+  max-width: 250px;
+}
+
+.user_avatar_img {
+  width: fit-content;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.settings_icon {
+  width: 10%;
+  position: absolute;
+  bottom: 0;
+  right: 0.5em;
+
+  svg {
+    fill: colors.$white;
+  }
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: colors.$white;
+  border: 2px solid colors.$danger;
+  border-radius: 2rem;
+  padding: 0.25em 0.75em;
+
+  span {
+    @include fonts.title-extra-small;
+    white-space: nowrap;
+    margin-left: 0.5em;
+    color: colors.$danger;
+  }
+}
+
+.alert_icon {
+  svg {
+    fill: colors.$danger;
+  }
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2em 0;
+}
+
+.values {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.temperature {
+  @include fonts.heading-large;
+  margin-bottom: -0.25em;
+}
+
+.weather {
+  @include fonts.heading-small;
+}
+
+.location_name {
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+
+  span {
+    @include fonts.label-small;
+  }
+}
+
+.meeting_details {
+  @include fonts.paragraph-small;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.85em 1.5rem;
+  color: colors.$white;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.section_title {
+  @include fonts.label-medium;
+  color: colors.$black;
+}
+
+.section_content {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 0.5em 1em 1.25em;
+  gap: 0.5em;
+}
+
+.section_card {
+  border: 0.5px colors.$grey solid;
+  padding: 1em;
+  min-width: 8rem;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  transition: 0.2s;
+}
+
+.section_card:hover {
+  background-color: colors.$paddy;
+}
+
+.illustration {
+  width: 100%;
+  aspect-ratio: 1/1;
+
+  div {
+    background-size: contain;
+    height: 100%;
+    width: 100%;
+
+    &.img1 {
+      background-image: url(../../assets/home-sections/wishlist.svg);
+    }
+
+    &.img2 {
+      background-image: url(../../assets/home-sections/history.svg);
+    }
+
+    &.img3 {
+      background-image: url(../../assets/home-sections/popular.svg);
+    }
+
+    &.img4 {
+      background-image: url(../../assets/home-sections/notifications.svg);
+    }
+  }
+}
+
+.section_card_title {
+  @include fonts.label-medium;
+  color: colors.$black;
 }

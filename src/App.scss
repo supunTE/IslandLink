@@ -1,6 +1,26 @@
+@use './scss/colors.scss';
+@use './scss/fonts.scss';
+
 .app {
-  background-color: #ffffff;
+  background-color: colors.$white;
+  color: colors.$black;
   height: 100vh;
   padding: 24px;
   font-size: 16px;
+}
+
+.input_box {
+  @include fonts.label-small;
+
+  padding-left: calc(2.25rem / 3) !important;
+  padding-right: 2.25rem;
+
+  &:focus-within {
+    border: 1px solid colors.$black;
+  }
+}
+
+.input_icon {
+  right: 0;
+  left: unset;
 }

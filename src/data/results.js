@@ -9,7 +9,7 @@ export const coworkingSpaces = [
     distance: 1.2,
     facilities: [
       'wifi',
-      'battery',
+      'charge',
       'food',
       'ac',
       'bed',
@@ -28,7 +28,7 @@ export const coworkingSpaces = [
       'https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
     pricePerHour: 1200,
     distance: 0.2,
-    facilities: ['wifi', 'battery', 'food', 'ac', 'pet', 'play'],
+    facilities: ['wifi', 'charge', 'food', 'ac', 'pet', 'play'],
     rating: 3.2,
     reviews: 150
   },
@@ -50,7 +50,7 @@ export const coworkingSpaces = [
       'https://images.unsplash.com/photo-1548610325-a4e09766d5b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1154&q=80',
     pricePerHour: 750,
     distance: 1.2,
-    facilities: ['battery', 'food', 'ac', 'play'],
+    facilities: ['charge', 'food', 'ac', 'play'],
     rating: 4.2,
     reviews: 50
   },
@@ -61,7 +61,7 @@ export const coworkingSpaces = [
       'https://images.unsplash.com/photo-1548610325-a4e09766d5b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1154&q=80',
     pricePerHour: 400,
     distance: 1.2,
-    facilities: ['wifi', 'battery', 'ac', 'camp', 'bicycle'],
+    facilities: ['wifi', 'charge', 'ac', 'camp', 'bicycle'],
     rating: 4.8,
     reviews: 500
   }

@@ -34,7 +34,7 @@ export function FacilityIcon({ facility }) {
   const icons = {
     wifi: PhosphorIcons.WifiHigh,
     food: PhosphorIcons.ForkKnife,
-    battery: PhosphorIcons.BatteryCharging,
+    charge: PhosphorIcons.BatteryCharging,
     health: PhosphorIcons.FirstAid,
     ac: PhosphorIcons.ThermometerCold,
     bed: PhosphorIcons.Bed,
@@ -68,19 +68,19 @@ function roundToHalf(value) {
 
 export function Rating({ rating, rateCount }) {
   const { StarHalf, Star } = PhosphorIcons
-  let elements = []
+  const elements = []
 
   const [integer, decimal] = roundToHalf(rating)
   for (let i = 1; i <= 5; i++) {
     if (i <= integer) {
-      elements.push(<Star size={16} weight="fill" />)
+      elements.push(<Star size={16} key={i} weight="fill" />)
       continue
     }
     if (decimal === 0.5) {
-      elements.push(<StarHalf size={16} weight="fill" />)
+      elements.push(<StarHalf size={16} key={i} weight="fill" />)
       continue
     }
-    elements.push(<Star size={16} />)
+    elements.push(<Star size={16} key={i} />)
   }
 
   return (

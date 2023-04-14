@@ -2,9 +2,11 @@ import { Input, Select } from '@mantine/core'
 import styles from './search.module.scss'
 import { MagnifyingGlass, MapPin } from '@phosphor-icons/react'
 import Filter from '../../components/Filter'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import TallCard from '../../components/TallCard'
 import { coworkingSpaces } from '../../data/results'
+import { collection, getDocs, query, limit } from 'firebase/firestore'
+import { db } from '../../firebase'
 
 export default function Search() {
   const [filterElements, _setFilterElements] = useState([
@@ -12,6 +14,40 @@ export default function Search() {
     'Hotels',
     'Co-working-space'
   ])
+
+  const [services, setServices] = useState({})
+  const [serviceIds, setServiceIds] = useState([])
+  const [searchResultCards, setSearchResultCards] = useState([])
+
+  useEffect(() => {
+    async function fetchData() {
+      const servicesCollection = collection(db, 'services')
+      const q = query(servicesCollection, limit(4))
+      const docs = await getDocs(q)
+
+      const cards = []
+      docs.forEach((doc) => {
+        const data = doc.data()
+        console.log(data.facilities)
+        cards.push(
+          <TallCard
+            key={doc.id}
+            img={data.image}
+            title={data.name}
+            subtitle={`Rs. ${data.pricePerHour} per day`}
+            label={`0km away`}
+            facilityList={data.facilities}
+            rating={data.rating}
+            rateCount={data.reviews}
+          />
+        )
+      })
+      setSearchResultCards(cards)
+    }
+    fetchData()
+  }, [])
+
+  console.log(services)
 
   return (
     <div className={styles.search}>
@@ -44,20 +80,7 @@ export default function Search() {
           <div className={styles.distance}>2.5km</div>
         </div>
       </div>
-      <div className={styles.content}>
-        {coworkingSpaces.map((space) => (
-          <TallCard
-            key={space.id}
-            img={space.image}
-            title={space.name}
-            subtitle={`Rs. ${space.pricePerHour} per day`}
-            label={`${space.distance}km away`}
-            facilityList={space.facilities}
-            rating={space.rating}
-            rateCount={space.reviews}
-          />
-        ))}
-      </div>
+      <div className={styles.content}>{searchResultCards}</div>
     </div>
   )
 }

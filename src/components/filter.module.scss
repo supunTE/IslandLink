@@ -3,10 +3,15 @@
 
 .items {
   display: flex;
+  align-items: center;
   gap: 0.75rem;
 }
 
 .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   svg {
     fill: colors.$tea;
   }
@@ -23,7 +28,7 @@
   @include fonts.title-extra-small;
   color: colors.$black;
   border: colors.$grey 1px solid;
-  padding: 1em;
+  padding: 0.25em 1em;
   white-space: nowrap;
   border-radius: 2em;
   transition-property: background-color, color;

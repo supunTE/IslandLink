@@ -71,12 +71,13 @@ export function Rating({ rating, rateCount }) {
   const elements = []
 
   const [integer, decimal] = roundToHalf(rating)
+
   for (let i = 1; i <= 5; i++) {
     if (i <= integer) {
       elements.push(<Star size={16} key={i} weight="fill" />)
       continue
     }
-    if (decimal === 0.5) {
+    if (decimal === 0.5 && i === integer + 1) {
       elements.push(<StarHalf size={16} key={i} weight="fill" />)
       continue
     }

@@ -1,12 +1,13 @@
 import { Input, Select } from '@mantine/core'
-import styles from './search.module.scss'
 import { MagnifyingGlass, MapPin } from '@phosphor-icons/react'
+import { collection, getDocs, limit, query } from 'firebase/firestore'
+import { useEffect, useState } from 'react'
 import Filter from '../../components/Filter'
-import { useState, useEffect } from 'react'
 import TallCard from '../../components/TallCard'
-import { coworkingSpaces } from '../../data/results'
-import { collection, getDocs, query, limit } from 'firebase/firestore'
 import { db } from '../../firebase'
+import { getCords } from './api/getUserCords'
+import { getUserLocation } from './api/getUserLocation'
+import styles from './search.module.scss'
 
 export default function Search() {
   const [filterElements, _setFilterElements] = useState([
@@ -15,20 +16,36 @@ export default function Search() {
     'Co-working-space'
   ])
 
+  const [userCity, setUserCity] = useState('')
   const [services, setServices] = useState({})
   const [serviceIds, setServiceIds] = useState([])
   const [searchResultCards, setSearchResultCards] = useState([])
 
   useEffect(() => {
     async function fetchData() {
+      try {
+        const userCords = await getCords()
+        const userLocation = await getUserLocation(userCords[0], userCords[1])
+        setUserCity(userLocation)
+      } catch (error) {
+        console.log(error)
+      }
+
       const servicesCollection = collection(db, 'services')
       const q = query(servicesCollection, limit(50))
       const docs = await getDocs(q)
 
+      // const userLocation = await getLocation()
+
       const cards = []
       docs.forEach((doc) => {
         const data = doc.data()
-        console.log(data.facilities)
+        // const distance = requestDistance(userLocation, data.location)
+        // console.log(distance)
+        // const serviceLocation = [data.location._lat, data.location._long]
+        // const distance = requestDistance(userLocation, [56.12, 10.25])
+        // console.log(distance)
+
         cards.push(
           <TallCard
             key={doc.id}
@@ -43,11 +60,11 @@ export default function Search() {
         )
       })
       setSearchResultCards(cards)
+
+      // requestDistance
     }
     fetchData()
   }, [])
-
-  console.log(services)
 
   return (
     <div className={styles.search}>
@@ -75,7 +92,7 @@ export default function Search() {
           className={styles.select}
         />
         <div className={styles.details}>
-          <h4 className={styles.city}>Dambulla</h4>
+          <h4 className={styles.city}>{userCity ? userCity : null}</h4>
           <MapPin size={16} weight="fill" />
           <div className={styles.distance}>2.5km</div>
         </div>

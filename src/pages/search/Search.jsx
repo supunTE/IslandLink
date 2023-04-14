@@ -22,7 +22,7 @@ export default function Search() {
   useEffect(() => {
     async function fetchData() {
       const servicesCollection = collection(db, 'services')
-      const q = query(servicesCollection, limit(4))
+      const q = query(servicesCollection, limit(50))
       const docs = await getDocs(q)
 
       const cards = []

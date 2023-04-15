@@ -24,3 +24,11 @@
   right: 0;
   left: unset;
 }
+
+.input_select {
+  @include fonts.label-small;
+}
+
+.input_dropdown_item {
+  @include fonts.label-small;
+}

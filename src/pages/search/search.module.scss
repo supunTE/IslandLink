@@ -19,7 +19,7 @@
   gap: 1em;
 
   .select {
-    flex: 1;
+    flex: 1.5;
   }
 }
 
@@ -45,4 +45,5 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5em;
+  margin-bottom: 5em;
 }

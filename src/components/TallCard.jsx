@@ -19,11 +19,13 @@ export default function TallCard({
         <h3 className={styles.title}>{title}</h3>
         <h4 className={styles.subtitle}>{subtitle}</h4>
         <span className={styles.label}>{label}</span>
-        <div className={styles.facilities}>
-          {facilityList.map((facility, index) => (
-            <FacilityIcon key={index} facility={facility} />
-          ))}
-        </div>
+        {facilityList && (
+          <div className={styles.facilities}>
+            {facilityList.map((facility, index) => (
+              <FacilityIcon key={index} facility={facility} />
+            ))}
+          </div>
+        )}
         <Rating rating={rating} rateCount={rateCount} />
       </div>
     </div>

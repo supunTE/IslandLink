@@ -3,15 +3,18 @@ import { Funnel } from '@phosphor-icons/react'
 import cs from 'classnames'
 import { useState } from 'react'
 
-export default function Filter({ elements }) {
+export default function Filter({ elements, onChange }) {
   const [selected, setSelected] = useState(elements)
 
   const filterHandler = (element) => {
+    let selectedNames = []
     if (selected.includes(element)) {
-      setSelected(selected.filter((item) => item !== element))
+      selectedNames = selected.filter((item) => item !== element)
     } else {
-      setSelected([...selected, element])
+      selectedNames = [...selected, element]
     }
+    setSelected(selectedNames)
+    onChange(selectedNames)
   }
 
   return (

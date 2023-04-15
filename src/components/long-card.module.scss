@@ -1,0 +1,80 @@
+@use '../scss/colors.scss';
+@use '../scss/fonts.scss';
+
+.longCard {
+  --radius: 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+  align-items: left;
+  justify-content: flex-start;
+  border-radius: var(--radius);
+  border: colors.$dark-grey 0.5px solid;
+  padding: 0.5em;
+}
+
+.image {
+  flex: 1;
+  aspect-ratio: 1/1;
+  background-size: cover;
+}
+
+.text_content {
+  flex: 1;
+  width: 100%;
+  padding: 0.25em 0.5em;
+  text-align: left;
+}
+
+.title {
+  @include fonts.label-medium;
+  color: colors.$black;
+  padding-top: 0.75em;
+}
+
+.subtitle {
+  @include fonts.label-small;
+  color: colors.$black;
+}
+
+.label {
+  @include fonts.label-small;
+  color: colors.$dark-grey;
+}
+
+.facilities {
+  display: flex;
+  width: 100%;
+  height: 16px;
+  margin: 0.5em 0;
+  flex-wrap: wrap;
+  overflow: hidden;
+  gap: 0.25em;
+}
+
+.facility_icon {
+  svg {
+    fill: colors.$dark-grey;
+  }
+}
+
+.rating {
+  margin: 0.75em 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+
+  .stars {
+    display: flex;
+    gap: 0.05em;
+
+    svg {
+      fill: colors.$tea;
+    }
+  }
+
+  .rate_count {
+    @include fonts.label-small;
+    color: colors.$dark-grey;
+  }
+}

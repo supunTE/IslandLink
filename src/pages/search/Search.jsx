@@ -8,8 +8,11 @@ import { db } from '../../firebase'
 import { getCords } from './api/getUserCords'
 import { getUserLocation } from './api/getUserLocation'
 import styles from './search.module.scss'
+import LongCard from '../../components/LongCard'
 
 export default function Search() {
+  const [searchValue, setSearchValue] = useState('')
+
   const [filterElements, _setFilterElements] = useState([
     'Locations',
     'Hotels',
@@ -78,6 +81,8 @@ export default function Search() {
         placeholder="Search"
         radius="xl"
         classNames={{ input: 'input_box', icon: 'input_icon' }}
+        value={searchValue}
+        onChange={(event) => setSearchValue(event.target.value)}
       />
 
       <Filter elements={filterElements}></Filter>
@@ -100,7 +105,25 @@ export default function Search() {
           <div className={styles.distance}>2.5km</div>
         </div>
       </div>
-      <div className={styles.content}>{searchResultCards}</div>
+
+      {!searchValue && (
+        <div className={styles.content}>{searchResultCards}</div>
+      )}
+
+      {searchValue && (
+        <div className={styles.search_result}>
+          {
+            <LongCard
+              img="https://images.unsplash.com/photo-1658387574197-74efe5041d4c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"
+              title="YourSpace"
+              subtitle="Rs. 1000+ per Hour"
+              label="200m away"
+              facilityList={['wifi', 'food']}
+              rating="2.5"
+              rateCount="2.5"></LongCard>
+          }
+        </div>
+      )}
     </div>
   )
 }

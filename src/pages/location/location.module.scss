@@ -1,0 +1,39 @@
+@use '../../scss/colors.scss';
+@use '../../scss/fonts.scss';
+@use '../../scss/animation.scss';
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.caption_bar {
+  display: flex;
+  padding: 0.4em;
+  justify-content: space-between;
+}
+
+.place {
+  display: flex;
+  flex-direction: column;
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  @include fonts.title-medium;
+}
+
+.location {
+  @include fonts.label-small;
+}
+
+.desc {
+  @include fonts.paragraph-small;
+  padding: 0.4em;
+}

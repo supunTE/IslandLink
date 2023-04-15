@@ -5,19 +5,18 @@ import { useEffect, useState } from 'react'
 import Filter from '../../components/Filter'
 import TallCard from '../../components/TallCard'
 import { db } from '../../firebase'
-import { getCords } from './api/getUserCords'
-import { getUserLocation } from './api/getUserLocation'
-import styles from './search.module.scss'
+// import { getCords } from './api/getUserCords'
+// import { getUserLocation } from './api/getUserLocation'
 import LongCard from '../../components/LongCard'
+import styles from './market.module.scss'
 
-export default function Search() {
+export default function Market() {
   const [searchValue, setSearchValue] = useState('')
 
   const [filterElements, _setFilterElements] = useState([
-    'Locations',
-    'Hotels',
-    'Co-working-space',
-    'Restaurants'
+    'Art',
+    'Handmade',
+    'Collectibles'
   ])
 
   const [userCity, setUserCity] = useState('')
@@ -44,33 +43,33 @@ export default function Search() {
   // const distance = requestDistance(userLocation, [56.12, 10.25])
   // console.log(distance)
 
-  useEffect(() => {
-    async function fetchData() {
-      const servicesCollection = collection(db, 'services')
-      const q = query(servicesCollection, limit(50))
-      const docs = await getDocs(q)
+  //   useEffect(() => {
+  //     async function fetchData() {
+  //       const servicesCollection = collection(db, 'services')
+  //       const q = query(servicesCollection, limit(50))
+  //       const docs = await getDocs(q)
 
-      const cards = []
-      docs.forEach((doc) => {
-        const data = doc.data()
-        cards.push(
-          <TallCard
-            key={doc.id}
-            dataType={data.type}
-            img={data.image}
-            title={data.name}
-            subtitle={`Rs. ${data.pricePerHour} per day`}
-            label={`0km away`}
-            facilityList={data.facilities}
-            rating={data.rating}
-            rateCount={data.reviews}
-          />
-        )
-      })
-      setSearchResultCards(cards)
-    }
-    fetchData()
-  }, [])
+  //       const cards = []
+  //       docs.forEach((doc) => {
+  //         const data = doc.data()
+  //         cards.push(
+  //           <TallCard
+  //             key={doc.id}
+  //             dataType={data.type}
+  //             img={data.image}
+  //             title={data.name}
+  //             subtitle={`Rs. ${data.pricePerHour} per day`}
+  //             label={`0km away`}
+  //             facilityList={data.facilities}
+  //             rating={data.rating}
+  //             rateCount={data.reviews}
+  //           />
+  //         )
+  //       })
+  //       setSearchResultCards(cards)
+  //     }
+  //     fetchData()
+  //   }, [])
 
   return (
     <div className={styles.search}>
@@ -100,17 +99,17 @@ export default function Search() {
           className={styles.select}
         />
         <div className={styles.details}>
-          <h4 className={styles.city}>{userCity ? userCity : null}</h4>
+          <h4 className={styles.city}>{userCity ? userCity : null}Kandy</h4>
           <MapPin size={16} weight="fill" />
           <div className={styles.distance}>2.5km</div>
         </div>
       </div>
 
-      {!searchValue && (
+      {/* {!searchValue && (
         <div className={styles.content}>{searchResultCards}</div>
-      )}
+      )} */}
 
-      {searchValue && (
+      {/* {searchValue && (
         <div className={styles.search_result}>
           {
             <LongCard
@@ -123,7 +122,29 @@ export default function Search() {
               rateCount="2.5"></LongCard>
           }
         </div>
-      )}
+      )} */}
+
+      <div className={styles.content}>
+        <TallCard
+          img="https://images.unsplash.com/photo-1523367438061-01c055ce790c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
+          title="Rs. 3000"
+          subtitle="Hand Painted Pots"></TallCard>
+
+        <TallCard
+          img="https://images.unsplash.com/photo-1523367438061-01c055ce790c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
+          title="Rs. 3000"
+          subtitle="Hand Painted Pots"></TallCard>
+
+        <TallCard
+          img="https://images.unsplash.com/photo-1523367438061-01c055ce790c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
+          title="Rs. 3000"
+          subtitle="Hand Painted Pots"></TallCard>
+
+        <TallCard
+          img="https://images.unsplash.com/photo-1523367438061-01c055ce790c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
+          title="Rs. 3000"
+          subtitle="Hand Painted Pots"></TallCard>
+      </div>
     </div>
   )
 }

@@ -1,0 +1,48 @@
+@use '../../scss/colors.scss';
+@use '../../scss/fonts.scss';
+
+.search {
+  display: flex;
+  gap: 0.75rem;
+  flex-direction: column;
+}
+
+.heading {
+  @include fonts.heading-large;
+  color: colors.$black;
+}
+
+.options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+
+  .select {
+    flex: 1;
+  }
+}
+
+.details {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.25em;
+}
+
+.city {
+  @include fonts.title-extra-small;
+  color: colors.$black;
+}
+
+.distance {
+  @include fonts.label-small;
+  color: colors.$black;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
+}

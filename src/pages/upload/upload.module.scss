@@ -1,0 +1,55 @@
+@use '../../scss/colors.scss';
+@use '../../scss/fonts.scss';
+@use '../../scss/animation.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.page_title {
+  @include fonts.heading-medium;
+}
+
+.option_set {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  padding: 0.5em;
+}
+
+.option {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+  @include fonts.paragraph-small;
+  align-items: center;
+}
+
+.icon_color {
+  color: colors.$ocean;
+}
+
+.details {
+  padding-top: 1.5em;
+  padding-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.desc {
+  height: 60%;
+}
+
+.option:hover {
+  background: colors.$grey;
+}
+
+.input_file {
+  @include fonts.paragraph-small;
+}
+
+.popup_title {
+  @include fonts.title-medium;
+}

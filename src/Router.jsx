@@ -6,6 +6,7 @@ import Location from './pages/location/Location'
 import Search from './pages/search/Search'
 import Market from './pages/market/Market'
 import Service from './pages/service/Service'
+import Upload from './pages/upload/Upload'
 
 export default function Router() {
   return (
@@ -17,6 +18,7 @@ export default function Router() {
       <Route path="/location" element={<Location />} />
       <Route path="/market" element={<Market />} />
       <Route path="/service" element={<Service />} />
+      <Route path="/upload" element={<Upload />} />
     </Routes>
   )
 }

@@ -49,7 +49,7 @@ export default function Settings() {
       </div>
 
       <div className={styles.ui_content}>
-        <section className={styles.catogary}>General</section>
+        <section className={styles.category}>General</section>
         <section>
           <div className={styles.content}>
             <Eyeglasses size={20} />
@@ -69,7 +69,7 @@ export default function Settings() {
           </div>
         </section>
 
-        <section className={styles.catogary}>Privacy and Security</section>
+        <section className={styles.category}>Privacy and Security</section>
         <section>
           <div className={styles.content}>
             <Password size={20} />
@@ -97,7 +97,7 @@ export default function Settings() {
           </div>
         </section>
 
-        <section className={styles.catogary}>Notifications</section>
+        <section className={styles.category}>Notifications</section>
         <section>
           <div className={styles.content}>
             <SpeakerSimpleX size={20} />
@@ -105,7 +105,7 @@ export default function Settings() {
           </div>
         </section>
 
-        <section className={styles.catogary}>About</section>
+        <section className={styles.category}>About</section>
         <section>
           <div className={styles.content}>
             <FileText size={20} />

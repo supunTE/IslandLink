@@ -2,7 +2,7 @@
   "extends": ["plugin:react/recommended", "prettier"],
   "plugins": ["react", "prettier"],
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
@@ -13,11 +13,17 @@
     "max-nested-callbacks": ["error", 3],
     "prefer-const": "error",
     "arrow-parens": ["error", "always"],
-    "semi": ["error", "always"],
     "no-var": "error",
-    "no-console": "error",
-    "no-unused-vars": "error",
+    "no-console": "warn",
+    "no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "^_",
+        "argsIgnorePattern": "^_"
+      }
+    ],
     "no-duplicate-imports": "error",
-    "prettier/prettier": ["error"]
+    "prettier/prettier": ["error"],
+    "react/react-in-jsx-scope": "off"
   }
 }

@@ -1,0 +1,44 @@
+@use '../scss/colors.scss';
+@use '../scss/fonts.scss';
+
+.items {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 0.75em;
+
+  svg {
+    fill: colors.$tea;
+  }
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  overflow: scroll;
+  padding-bottom: 0.75em;
+  width: 100%;
+}
+
+.item {
+  @include fonts.title-extra-small;
+  color: colors.$black;
+  border: colors.$grey 1px solid;
+  padding: 0.25em 1em;
+  white-space: nowrap;
+  border-radius: 2em;
+  transition-property: background-color, color;
+  transition: 0.2s;
+
+  &.selected {
+    background-color: colors.$tea;
+    color: colors.$white;
+  }
+}

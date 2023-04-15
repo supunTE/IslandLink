@@ -15,7 +15,7 @@ export default function Filter({ elements }) {
   }
 
   return (
-    <div className={styles.tilter}>
+    <div className={styles.filter}>
       <div className={styles.items}>
         <div className={styles.icon}>
           <Funnel size={20} weight="fill" />

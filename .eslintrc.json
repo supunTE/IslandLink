@@ -2,7 +2,7 @@
   "extends": ["plugin:react/recommended", "prettier"],
   "plugins": ["react", "prettier"],
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
@@ -14,7 +14,7 @@
     "prefer-const": "error",
     "arrow-parens": ["error", "always"],
     "no-var": "error",
-    "no-console": "error",
+    "no-console": "warn",
     "no-unused-vars": [
       "error",
       {

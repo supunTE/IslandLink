@@ -13,7 +13,8 @@ export default function Search() {
   const [filterElements, _setFilterElements] = useState([
     'Locations',
     'Hotels',
-    'Co-working-space'
+    'Co-working-space',
+    'Restaurants'
   ])
 
   const [userCity, setUserCity] = useState('')
@@ -22,7 +23,7 @@ export default function Search() {
   const [searchResultCards, setSearchResultCards] = useState([])
 
   useEffect(() => {
-    async function fetchData() {
+    async function takeLocation() {
       try {
         const userCords = await getCords()
         const userLocation = await getUserLocation(userCords[0], userCords[1])
@@ -30,25 +31,29 @@ export default function Search() {
       } catch (error) {
         console.log(error)
       }
+    }
+    takeLocation()
+  }, [])
 
+  // const distance = requestDistance(userLocation, data.location)
+  // console.log(distance)
+  // const serviceLocation = [data.location._lat, data.location._long]
+  // const distance = requestDistance(userLocation, [56.12, 10.25])
+  // console.log(distance)
+
+  useEffect(() => {
+    async function fetchData() {
       const servicesCollection = collection(db, 'services')
       const q = query(servicesCollection, limit(50))
       const docs = await getDocs(q)
 
-      // const userLocation = await getLocation()
-
       const cards = []
       docs.forEach((doc) => {
         const data = doc.data()
-        // const distance = requestDistance(userLocation, data.location)
-        // console.log(distance)
-        // const serviceLocation = [data.location._lat, data.location._long]
-        // const distance = requestDistance(userLocation, [56.12, 10.25])
-        // console.log(distance)
-
         cards.push(
           <TallCard
             key={doc.id}
+            dataType={data.type}
             img={data.image}
             title={data.name}
             subtitle={`Rs. ${data.pricePerHour} per day`}
@@ -60,8 +65,6 @@ export default function Search() {
         )
       })
       setSearchResultCards(cards)
-
-      // requestDistance
     }
     fetchData()
   }, [])

@@ -1,6 +1,7 @@
 export function getUserLocation(lat, long) {
   return new Promise((resolve, reject) => {
     const endpoint = 'https://api.openrouteservice.org/geocode/reverse'
+    /* eslint-disable-next-line  */
     const apiKey = import.meta.env.VITE_OPEN_ROUTE
 
     // Send API request

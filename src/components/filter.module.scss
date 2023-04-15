@@ -11,6 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-bottom: 0.75em;
 
   svg {
     fill: colors.$tea;
@@ -20,8 +21,10 @@
 .filters {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 0.25rem;
+  overflow: scroll;
+  padding-bottom: 0.75em;
+  width: 100%;
 }
 
 .item {

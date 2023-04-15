@@ -4,6 +4,7 @@ import Settings from './pages/settings/Settings'
 import Community from './pages/community/Community'
 import Location from './pages/location/Location'
 import Search from './pages/search/Search'
+import Market from './pages/market/Market'
 
 export default function Router() {
   return (
@@ -13,6 +14,7 @@ export default function Router() {
       <Route path="/settings" element={<Settings />} />
       <Route path="/community" element={<Community />} />
       <Route path="/location" element={<Location />} />
+      <Route path="/market" element={<Market />} />
     </Routes>
   )
 }

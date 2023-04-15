@@ -37,3 +37,53 @@
   @include fonts.paragraph-small;
   padding: 0.4em;
 }
+
+.review_title {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5em;
+  align-items: center;
+  gap: 0.5em;
+}
+
+#review_title {
+  @include fonts.title-small;
+}
+
+#review_presentage {
+  @include fonts.label-small;
+}
+
+.review_card {
+  padding: 0.4em;
+  border: colors.$dark-grey 0.5px solid;
+  border-radius: 10px;
+  margin-bottom: 0.4em;
+}
+
+.user {
+  display: flex;
+  width: 100%;
+  height: 3rem;
+  // background: red;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.user_img img {
+  flex-direction: column;
+  border-radius: 50%;
+  height: 2em;
+  width: 2em;
+  object-fit: cover;
+  justify-content: center;
+  align-items: center;
+}
+
+.name {
+  @include fonts.label-small;
+}
+
+.review_desc {
+  @include fonts.label-small;
+}

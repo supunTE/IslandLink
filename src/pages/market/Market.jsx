@@ -1,13 +1,8 @@
 import { Input, Select } from '@mantine/core'
 import { MagnifyingGlass, MapPin } from '@phosphor-icons/react'
-import { collection, getDocs, limit, query } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 import Filter from '../../components/Filter'
 import TallCard from '../../components/TallCard'
-import { db } from '../../firebase'
-// import { getCords } from './api/getUserCords'
-// import { getUserLocation } from './api/getUserLocation'
-import LongCard from '../../components/LongCard'
 import styles from './market.module.scss'
 
 export default function Market() {

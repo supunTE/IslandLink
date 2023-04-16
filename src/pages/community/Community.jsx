@@ -9,11 +9,6 @@ import User from './components/User'
 
 export default function Community() {
   return (
-    // <div>
-    //     <Post image='' title='hi'>helooooooogvfdsaxcvbvcss gfredwsa</Post>
-    //     <Post image='' title='hi'></Post>
-    // </div>
-
     <div>
       <div className={styles.sliders}>
         <Carousel maw={320} mx="auto" withIndicators height={150}>

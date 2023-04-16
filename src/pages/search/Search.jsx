@@ -1,13 +1,12 @@
 import { Input, Select } from '@mantine/core'
 import { MagnifyingGlass, MapPin } from '@phosphor-icons/react'
-import { collection, getDocs, limit, query } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
+import { loadServicesDocs, requestLocation } from '../../api'
 import Filter from '../../components/Filter'
 import LongCard from '../../components/LongCard'
 import TallCard from '../../components/TallCard'
-import { db } from '../../firebase'
-import { getCords } from './api/getUserCords'
 import styles from './search.module.scss'
+import { getDistance } from '../../api/getDistance'
 
 export default function Search() {
   const [searchValue, setSearchValue] = useState('')
@@ -31,101 +30,41 @@ export default function Search() {
   }
 
   const [userCity, setUserCity] = useState('')
+  const [sortCategory, setSortCategory] = useState('')
+  const [allServices, setAllServices] = useState([])
   const [services, setServices] = useState([])
   const [searchResultCards, setSearchResultCards] = useState([])
 
+  // Update data from firebase
   useEffect(() => {
-    async function requestLocation() {
-      try {
-        const userCords = await getCords()
-        const response = await fetch(
-          `${import.meta.env.VITE_API_ENDPOINT}/city`,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              lat: userCords[0],
-              long: userCords[1]
-            })
-          }
-        )
-        const data = await response.json()
-        setUserCity(data['city'])
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    requestLocation()
-  }, [])
+    async function loadData() {
+      const city = (await requestLocation()) || ''
+      setUserCity(city)
+      const servs = (await loadServicesDocs()) || []
+      setAllServices(servs)
 
-  useEffect(() => {
-    async function getDistance(destLong, destLat) {
-      try {
-        const userCords = await getCords()
-        const response = await fetch(
-          `${import.meta.env.VITE_API_ENDPOINT}/distance`,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-
-            body: JSON.stringify({
-              sourceLat: userCords[0],
-              sourceLong: userCords[1],
-              destLong,
-              destLat
-            })
-          }
-        )
-
-        const data = await response.json()
-        return data['distance']
-      } catch (error) {
-        console.error(error)
-      }
-    }
-
-    async function fetchData() {
-      const servicesCollection = collection(db, 'services')
-      const q = query(servicesCollection, limit(10))
-      const docs = await getDocs(q)
-
-      const servicesData = []
-      docs.forEach(async (doc) => {
-        const data = doc.data()
-
-        const serviceData = {
-          id: doc.id,
-          // TODO: should change pricePerHour => price Later
-          pricePerDay:
-            data.type === 'cospace'
-              ? data.pricePerHour * 24
-              : data.pricePerHour || 0,
-          ...data,
-          distance: 0
-        }
-
-        servicesData.push(serviceData)
-      })
-
-      for (const [index, service] of servicesData.entries()) {
+      for (const [index, service] of servs.entries()) {
         const distance = await getDistance(
           service.location._long,
           service.location._lat
         )
-        if (!distance) {
+        if (await !distance) {
           break
         }
-        servicesData[index].distance = distance
+        setAllServices((prev) => {
+          const newServices = [...prev]
+          newServices[index].distance = distance
+          return newServices
+        })
       }
-
-      setServices(servicesData)
     }
-    fetchData()
+    loadData()
   }, [])
+
+  useEffect(() => {
+    setServices(allServices)
+    updateCards(allServices)
+  }, [allServices])
 
   function generateCards(services) {
     const cards = []
@@ -159,28 +98,75 @@ export default function Search() {
     return cards
   }
 
-  useEffect(() => {
-    setSearchResultCards(generateCards(services))
-  }, [services])
-
-  function sortChangeHandler(category) {
-    if (category === 'price') {
-      services.sort((a, b) => a.pricePerDay - b.pricePerDay)
-    } else if (category === 'distance') {
-      services.sort((a, b) => a.distance - b.distance)
-    } else if (category === 'rating') {
-      services.sort((a, b) => b.rating - a.rating)
+  function generateSearchResultCards(services) {
+    const cards = []
+    for (const service of services) {
+      let subtitle = ''
+      switch (service.type) {
+        case 'hotel':
+          subtitle = `Rs. ${service.pricePerHour} per day`
+          break
+        case 'cospace':
+          subtitle = `Rs. ${service.pricePerHour} per hour`
+          break
+        case 'restaurant':
+          subtitle = `Tap to view menu`
+          break
+      }
+      cards.push(
+        <LongCard
+          key={service.id}
+          dataType={service.type}
+          img={service.image}
+          title={service.name}
+          subtitle={subtitle}
+          label={`${service.distance}km away`}
+          facilityList={service.facilities}
+          rating={service.rating}
+          rateCount={service.reviews}
+        />
+      )
     }
-    setSearchResultCards(generateCards(services))
-    updateCardsBaseOnFilters(selectedFilterElements)
+    return cards
   }
 
-  function updateCardsBaseOnFilters(filterNames) {
-    const values = filterNames.map((name) => filterValues[name])
-    const filteredServices = services.filter((service) =>
+  function updateCards(data = services) {
+    if (!searchValue) {
+      setSearchResultCards(generateCards(data))
+    } else {
+      setSearchResultCards(generateSearchResultCards(data))
+    }
+  }
+
+  function sortServices(data = services, category) {
+    console.log(data)
+    const newArr = [...data]
+    if (category === 'price') {
+      newArr.sort((a, b) => a.pricePerDay - b.pricePerDay)
+    } else if (category === 'distance') {
+      newArr.sort((a, b) => a.distance - b.distance)
+    } else if (category === 'rating') {
+      newArr.sort((a, b) => b.rating - a.rating)
+    }
+    console.log(newArr)
+    return newArr
+  }
+
+  function updateCardsBaseOnFilters(fn = selectedFilterElements) {
+    const values = fn.map((name) => filterValues[name])
+    const filteredServices = allServices.filter((service) =>
       values.includes(service.type)
     )
-    setSearchResultCards(generateCards(filteredServices))
+    const newArr = sortServices(filteredServices, sortCategory)
+    setServices(newArr)
+    updateCards(newArr)
+  }
+
+  function sortChangeHandler(category) {
+    setSortCategory(category)
+    const newArr = sortServices(services, category)
+    setServices(newArr)
+    updateCards(newArr)
   }
 
   function filterChangeHandler(filterNames) {

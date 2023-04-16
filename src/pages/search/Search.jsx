@@ -130,11 +130,18 @@ export default function Search() {
     return cards
   }
 
+  useEffect(() => {
+    updateCards()
+  }, [searchValue])
+
   function updateCards(data = services) {
     if (!searchValue) {
       setSearchResultCards(generateCards(data))
     } else {
-      setSearchResultCards(generateSearchResultCards(data))
+      const filteredServices = data.filter((service) =>
+        service.name.toLowerCase().includes(searchValue.toLowerCase())
+      )
+      setSearchResultCards(generateSearchResultCards(filteredServices))
     }
   }
 
@@ -214,23 +221,10 @@ export default function Search() {
         </div>
       </div>
 
-      {!searchValue && (
+      {searchValue === '' ? (
         <div className={styles.content}>{searchResultCards}</div>
-      )}
-
-      {searchValue && (
-        <div className={styles.search_result}>
-          {
-            <LongCard
-              img="https://images.unsplash.com/photo-1658387574197-74efe5041d4c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"
-              title="YourSpace"
-              subtitle="Rs. 1000+ per Hour"
-              label="200m away"
-              facilityList={['wifi', 'food']}
-              rating="2.5"
-              rateCount="2.5"></LongCard>
-          }
-        </div>
+      ) : (
+        <div className={styles.search_results_content}>{searchResultCards}</div>
       )}
     </div>
   )

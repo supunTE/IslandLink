@@ -1,22 +1,22 @@
-import styles from './location.module.scss'
+import styles from './service.module.scss'
 import { Carousel } from '@mantine/carousel'
-import { Image } from '@mantine/core'
+import { Image, Button } from '@mantine/core'
 import Review from './components/Review'
 import User from './components/User'
 import { Rating } from '../../components/LongCard'
 
-import { PlusCircle, MapTrifold } from '@phosphor-icons/react'
+import { PlusCircle, MapTrifold, ForkKnife } from '@phosphor-icons/react'
 
-export default function Location() {
+export default function Service() {
   const images = [
-    'https://images.unsplash.com/photo-1580889240912-c39ecefd3d95?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1779&q=80',
-    'https://images.unsplash.com/photo-1580889240912-c39ecefd3d95?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1779&q=80',
-    'https://images.unsplash.com/photo-1580889240912-c39ecefd3d95?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1779&q=80',
-    'https://images.unsplash.com/photo-1580889240912-c39ecefd3d95?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1779&q=80'
+    'https://images.unsplash.com/photo-1658387574197-74efe5041d4c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80',
+    'https://images.unsplash.com/photo-1658387574197-74efe5041d4c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80',
+    'https://images.unsplash.com/photo-1658387574197-74efe5041d4c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80',
+    'https://images.unsplash.com/photo-1658387574197-74efe5041d4c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80'
   ]
 
-  const slides = images.map((url) => (
-    <Carousel.Slide key={url}>
+  const slides = images.map((url, index) => (
+    <Carousel.Slide key={index}>
       <Image src={url} />
     </Carousel.Slide>
   ))
@@ -38,7 +38,7 @@ export default function Location() {
         </div>
         <div className={styles.icons}>
           <section>
-            <PlusCircle size={20} weight="fill" />
+            <ForkKnife size={20} />{' '}
           </section>
           <section>
             <MapTrifold size={20} weight="fill" />
@@ -47,11 +47,9 @@ export default function Location() {
       </div>
 
       <div className={styles.desc}>
-        Sigiriya or Sinhagiri is an ancient rock fortress located in the
-        northern Matale District near the town of Dambulla in the Central
-        Province, Sri Lanka. It is a site of historical and archaeological
-        significance that is dominated by a massive column of granite rock
-        approximately 180 m high. (Wikipedia)
+        <Button radius="xl" className={styles.btn}>
+          Book
+        </Button>
       </div>
 
       <div className={styles.review_title}>

@@ -2,9 +2,29 @@
 @use '../../scss/fonts.scss';
 @use '../../scss/animation.scss';
 
-* {
-  padding: 0;
-  margin: 0;
+.service {
+  position: relative;
+}
+
+.carousel_container {
+  position: relative;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 1000;
+
+  & > svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
 }
 
 .caption_bar {

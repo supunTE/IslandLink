@@ -17,7 +17,7 @@ export default function Router() {
       <Route path="/community" element={<Community />} />
       <Route path="/location" element={<Location />} />
       <Route path="/market" element={<Market />} />
-      <Route path="/service" element={<Service />} />
+      <Route path="/service/:id" element={<Service />} />
       <Route path="/upload" element={<Upload />} />
     </Routes>
   )

@@ -1,7 +1,6 @@
 import { getCords } from './getUserCords'
 
 export async function getDistance(destLong, destLat) {
-  console.log('getDistance', destLong, destLat)
   try {
     const userCords = await getCords()
     const response = await fetch(
@@ -13,8 +12,8 @@ export async function getDistance(destLong, destLat) {
         },
 
         body: JSON.stringify({
-          sourceLat: userCords[0],
-          sourceLong: userCords[1],
+          sourceLong: userCords[0],
+          sourceLat: userCords[1],
           destLong,
           destLat
         })

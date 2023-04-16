@@ -1,40 +1,71 @@
 import styles from './service.module.scss'
 import { Carousel } from '@mantine/carousel'
-import { Image, Button } from '@mantine/core'
+import { Image, Button, LoadingOverlay, Box } from '@mantine/core'
 import Review from './components/Review'
 import User from './components/User'
 import { Rating } from '../../components/LongCard'
-
+import { useParams } from 'react-router-dom'
 import { PlusCircle, MapTrifold, ForkKnife } from '@phosphor-icons/react'
+import { loadOneService, requestLocation } from '../../api'
+import { useDisclosure } from '@mantine/hooks'
+import { useEffect, useState } from 'react'
 
 export default function Service() {
-  const images = [
-    'https://images.unsplash.com/photo-1658387574197-74efe5041d4c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80',
-    'https://images.unsplash.com/photo-1658387574197-74efe5041d4c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80',
-    'https://images.unsplash.com/photo-1658387574197-74efe5041d4c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80',
-    'https://images.unsplash.com/photo-1658387574197-74efe5041d4c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80'
-  ]
+  const { id } = useParams()
+  const [visible, { toggle }] = useDisclosure(true)
+  const [location, setLocation] = useState('')
+  const [docData, setDocData] = useState(null)
+  const [images, setImages] = useState([
+    'https://images.unsplash.com/photo-1615766467663-63d763510149?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80'
+  ])
+
+  useEffect(() => {
+    async function loadData() {
+      const data = await loadOneService(id)
+
+      if (data) {
+        const imagesArray = [data.image]
+        if (data.images) {
+          for (const image of data.images) {
+            imagesArray.push(image)
+          }
+        }
+        setImages(imagesArray)
+        setDocData(data)
+        const distance = await requestLocation(
+          data.location._long,
+          data.location._lat
+        )
+        setLocation(distance)
+        toggle()
+      }
+    }
+    loadData()
+  }, [id])
 
   const slides = images.map((url, index) => (
-    <Carousel.Slide key={index}>
+    <Carousel.Slide key={index} className="carousel">
       <Image src={url} />
     </Carousel.Slide>
   ))
 
   return (
-    <div>
-      <div>
-        <Carousel maw={320} mx="auto" withIndicators>
+    <div className={styles.service}>
+      <div className={styles.loader}>
+        <LoadingOverlay visible={visible} overlayBlur={2} />
+      </div>
+      <div className={styles.carousel_container}>
+        <Carousel maw={320} height={200} mx="auto" withIndicators>
           {slides}
         </Carousel>
       </div>
 
       <div className={styles.caption_bar}>
         <div className={styles.place}>
-          <section className={styles.title}>Sigiriya</section>
-          <section className={styles.location}>
-            Dambulla, Central Province
+          <section className={styles.title}>
+            {docData?.name ? docData.name : ''}
           </section>
+          <section className={styles.location}>{location}</section>
         </div>
         <div className={styles.icons}>
           <section>

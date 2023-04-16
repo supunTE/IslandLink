@@ -8,10 +8,11 @@ export default function TallCard({
   label,
   facilityList = [],
   rating = 0,
-  rateCount = 0
+  rateCount = 0,
+  onClick = () => {}
 }) {
   return (
-    <div className={styles.tallCard}>
+    <div className={styles.tallCard} onClick={onClick}>
       <div
         className={styles.image}
         style={{ backgroundImage: `url(${img})` }}></div>

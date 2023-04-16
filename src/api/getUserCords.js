@@ -3,7 +3,7 @@ export function getCords() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          const location = [position.coords.latitude, position.coords.longitude]
+          const location = [position.coords.longitude, position.coords.latitude]
           resolve(location)
         },
         (error) => {

@@ -32,3 +32,8 @@
 .input_dropdown_item {
   @include fonts.label-small;
 }
+
+.carousel {
+  border-radius: 10px;
+  overflow: hidden;
+}

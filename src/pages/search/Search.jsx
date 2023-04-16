@@ -7,8 +7,10 @@ import LongCard from '../../components/LongCard'
 import TallCard from '../../components/TallCard'
 import styles from './search.module.scss'
 import { getDistance } from '../../api/getDistance'
+import { useNavigate } from 'react-router-dom'
 
 export default function Search() {
+  const navigate = useNavigate()
   const [searchValue, setSearchValue] = useState('')
 
   const [filterElements, _setFilterElements] = useState([
@@ -92,6 +94,9 @@ export default function Search() {
           facilityList={service.facilities}
           rating={service.rating}
           rateCount={service.reviews}
+          onClick={() => {
+            navigate(`../service/${service.id}`)
+          }}
         />
       )
     }
@@ -146,7 +151,6 @@ export default function Search() {
   }
 
   function sortServices(data = services, category) {
-    console.log(data)
     const newArr = [...data]
     if (category === 'price') {
       newArr.sort((a, b) => a.pricePerDay - b.pricePerDay)
@@ -155,7 +159,6 @@ export default function Search() {
     } else if (category === 'rating') {
       newArr.sort((a, b) => b.rating - a.rating)
     }
-    console.log(newArr)
     return newArr
   }
 

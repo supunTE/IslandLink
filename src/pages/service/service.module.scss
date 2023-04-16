@@ -75,8 +75,13 @@
   @include fonts.label-small;
 }
 
+.add_icon {
+  @include fonts.label-small;
+  fill: colors.$ocean;
+}
+
 .review_card {
-  padding: 0.4em;
+  padding: 0.4em 1em;
   border: colors.$dark-grey 0.5px solid;
   border-radius: 10px;
   margin-bottom: 0.4em;
@@ -111,9 +116,4 @@
 
 .reviews {
   padding-bottom: 1em;
-}
-
-.btn {
-  background-color: colors.$ocean;
-  @include fonts.label-medium;
 }

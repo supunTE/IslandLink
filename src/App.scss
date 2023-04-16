@@ -37,3 +37,7 @@
   border-radius: 10px;
   overflow: hidden;
 }
+
+.btn {
+  @include fonts.label-medium;
+}

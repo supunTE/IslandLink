@@ -66,7 +66,7 @@ function roundToHalf(value) {
   return result
 }
 
-export function Rating({ rating, rateCount }) {
+export function Rating({ rating, rateCount = -1 }) {
   const { StarHalf, Star } = PhosphorIcons
   const elements = []
 
@@ -87,7 +87,9 @@ export function Rating({ rating, rateCount }) {
   return (
     <div className={styles.rating}>
       <div className={styles.stars}>{elements}</div>
-      <span className={styles.rate_count}>({rateCount})</span>
+      {rateCount > -1 ? (
+        <span className={styles.rate_count}>({rateCount})</span>
+      ) : null}
     </div>
   )
 }

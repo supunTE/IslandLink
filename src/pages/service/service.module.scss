@@ -92,3 +92,8 @@
 .reviews {
   padding-bottom: 1em;
 }
+
+.btn {
+  background-color: colors.$ocean;
+  @include fonts.label-medium;
+}

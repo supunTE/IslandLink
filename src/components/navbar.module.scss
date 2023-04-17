@@ -1,0 +1,47 @@
+@use '../scss/colors.scss';
+@use '../scss/fonts.scss';
+
+.navbar {
+  position: fixed;
+  bottom: 2rem;
+  left: 0;
+  width: 100%;
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 24px;
+    gap: 20px;
+    isolation: isolate;
+    margin: 0 1em;
+    background: colors.$white;
+    border: 1px solid colors.$ocean;
+    border-radius: 100px;
+
+    li {
+      list-style: none;
+      a {
+        text-decoration: none;
+        position: relative;
+        svg {
+          fill: colors.$ocean;
+        }
+        &.active {
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -0.75em;
+            left: 0;
+            transform: translateX(-10%);
+            width: 120%;
+            height: 0;
+            border-bottom: 0.35em solid #028090;
+            border-radius: 2em;
+            transition: 0.2s;
+          }
+        }
+      }
+    }
+  }
+}

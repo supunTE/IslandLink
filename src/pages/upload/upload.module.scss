@@ -2,11 +2,6 @@
 @use '../../scss/fonts.scss';
 @use '../../scss/animation.scss';
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
 .page_title {
   @include fonts.heading-medium;
 }

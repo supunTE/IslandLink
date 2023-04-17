@@ -1,0 +1,48 @@
+@use '../../../scss/colors.scss';
+@use '../../../scss/fonts.scss';
+@use '../../../scss/animation.scss';
+
+/*Post details*/
+.post_details {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.post_img:has(img.img_wide) {
+  height: 50vmin;
+}
+
+.post_img:has(img.img_tall) {
+  width: 100vw;
+  height: 100vmin;
+  object-fit: contain;
+  background: colors.$black;
+}
+
+.img_wide {
+  height: 50vmin;
+  object-fit: contain;
+}
+
+.img_tall {
+  width: 100%;
+  height: 100vmin;
+  object-fit: contain;
+}
+
+.post_content {
+  margin-top: 0.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+.post_title {
+  @include fonts.label-small;
+}
+
+.post_desc {
+  @include fonts.paragraph-small;
+}

@@ -1,0 +1,83 @@
+@use '../../../scss/colors.scss';
+@use '../../../scss/fonts.scss';
+@use '../../../scss/animation.scss';
+
+/*Post details*/
+.post_details {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.post_bg {
+  background-color: colors.$paddy;
+  height: 80vmin;
+  width: 100vw;
+  position: relative;
+}
+
+.question {
+  @include fonts.paragraph-medium;
+  position: absolute;
+  inset: 8em 4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1em;
+
+  span {
+    border-radius: 10px;
+    background: colors.$white;
+    padding: 1.5em;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .question_mark {
+    display: flex;
+    justify-content: center;
+    aspect-ratio: 1/1;
+    background-color: colors.$white;
+    color: colors.$ocean;
+    font-size: 1.5em;
+    border-radius: 100%;
+  }
+}
+
+.top_answer {
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  gap: 0.25em;
+  padding: 2em 2.5em;
+  background-color: colors.$ash;
+  color: colors.$white;
+
+  .user {
+    @include fonts.label-small;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .user_icon {
+    width: 2rem;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 100%;
+    background-color: colors.$white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: colors.$ocean;
+    font-size: 1.5em;
+  }
+
+  .answer {
+    @include fonts.paragraph-small;
+  }
+}

@@ -1,4 +1,4 @@
-import styles from '../community.module.scss'
+import styles from './user.module.scss'
 
 export default function User({ image, name, time }) {
   return (

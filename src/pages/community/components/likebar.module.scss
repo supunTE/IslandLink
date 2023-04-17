@@ -1,0 +1,17 @@
+@use '../../../scss/colors.scss';
+@use '../../../scss/fonts.scss';
+
+.like_bar {
+  display: flex;
+  gap: 2em;
+  padding: 0.5em 1em;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  background-color: colors.$grey;
+  div {
+    @include fonts.title-small;
+    display: flex;
+    gap: 0.25em;
+  }
+}

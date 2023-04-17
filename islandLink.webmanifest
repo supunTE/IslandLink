@@ -1,0 +1,26 @@
+{
+  "name": "Island Link",
+  "short_name": "ISL",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#028090",
+  "background_color": "#FCFCFC",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./pngs/logo-circle.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "./pngs/logo-square.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "./pngs/logo-transparent.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

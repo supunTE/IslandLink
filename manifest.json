@@ -1,6 +1,7 @@
 {
   "name": "Island Link",
-  "short_name": "ISL",
+  "description": "Connect, explore, and work remotely in paradise with IslandLink - superapp for digital nomads in Sri Lanka",
+  "short_name": "Island Link",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#028090",
@@ -8,17 +9,17 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "./pngs/logo-circle.png",
+      "src": "/icons/logo-circle.png",
       "type": "image/png",
       "sizes": "512x512"
     },
     {
-      "src": "./pngs/logo-square.png",
+      "src": "/icons/logo-square.png",
       "type": "image/png",
       "sizes": "512x512"
     },
     {
-      "src": "./pngs/logo-transparent.png",
+      "src": "/icons/logo-transparent.png",
       "type": "image/png",
       "sizes": "512x512"
     }

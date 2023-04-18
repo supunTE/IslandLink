@@ -24,7 +24,7 @@ export default function Post({ post, title, desc, likesCount, commentsCount }) {
       <LikeBar likes={likesCount} comments={commentsCount}></LikeBar>
       <section className={styles.post_content}>
         <div className={styles.post_title}>{title}</div>
-        <div className={styles.post_desc}>{desc}</div>
+        {desc && <div className={styles.post_desc}>{desc}</div>}
       </section>
     </div>
   )

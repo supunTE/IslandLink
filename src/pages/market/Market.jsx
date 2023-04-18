@@ -68,7 +68,7 @@ export default function Market() {
 
   return (
     <div className={styles.search}>
-      <h1 className={styles.heading}>Search</h1>
+      <h1 className={styles.heading}>Market</h1>
 
       <Input
         icon={<MagnifyingGlass size={14} />}

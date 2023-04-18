@@ -5,7 +5,7 @@ export default function Question({
   topAnswerUserIcon,
   topAnswerUserName,
   question,
-  upVotescount,
+  upvotesCount,
   commentsCount,
   topAnswer
 }) {
@@ -19,7 +19,7 @@ export default function Question({
       </section>
       <LikeBar
         upVoteEnabled={true}
-        likes={upVotescount}
+        likes={upvotesCount}
         comments={commentsCount}></LikeBar>
       <section className={styles.top_answer}>
         <div className={styles.user}>

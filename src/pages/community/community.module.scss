@@ -2,18 +2,27 @@
 @use '../../scss/fonts.scss';
 @use '../../scss/animation.scss';
 
-/* slides on top*/
-.sliders {
-  background: #000;
-  border-radius: 1em;
+.heading {
+  @include fonts.heading-large;
+  color: colors.$black;
 }
 
-.slide {
-  color: white;
-  position: relative;
-  text-align: center;
-  top: 45%;
+.community {
+  max-width: 100vw;
 }
+
+// /* slides on top*/
+// .sliders {
+//   background: #000;
+//   border-radius: 1em;
+// }
+
+// .slide {
+//   color: white;
+//   position: relative;
+//   text-align: center;
+//   top: 45%;
+// }
 
 /* search bar*/
 .search_bar {

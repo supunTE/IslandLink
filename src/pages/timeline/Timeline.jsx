@@ -1,22 +1,40 @@
 import styles from './timeline.module.scss'
+import { LoadingOverlay } from '@mantine/core'
 import Card from './components/Card'
 import Imgcard from './components/Imgcard'
 import { ListBullets, CalendarBlank } from '@phosphor-icons/react'
+import { useDisclosure } from '@mantine/hooks'
+import { motion } from 'framer-motion'
+import { useEffect } from 'react'
 
 export default function Timeline() {
+  const [visible, { toggle }] = useDisclosure(true)
+
+  useEffect(() => {
+    toggle()
+  }, [])
+
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}>
+      {visible && (
+        <div className={styles.loader}>
+          <LoadingOverlay visible={visible} overlayBlur={2} />
+        </div>
+      )}
       <h1 className={styles.heading}>Timeline</h1>
       <div className={styles.title}>
         <div>New Journey</div>
-        <div className={styles.icons}>
+        {/* <div className={styles.icons}>
           <div>
             <ListBullets size={20} />
           </div>
           <div>
             <CalendarBlank size={20} />
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className={styles.timeline}>
@@ -43,6 +61,6 @@ export default function Timeline() {
           desc="Travel to Galle"
           time="10.00 am"></Imgcard>
       </div>
-    </div>
+    </motion.div>
   )
 }

@@ -66,7 +66,6 @@ export default function Market() {
           radius="xl"
           size="xs"
           data={[
-            { value: 'distance', label: 'Distance' },
             { value: 'price', label: 'Price' },
             { value: 'rating', label: 'Rating' }
           ]}
@@ -83,22 +82,30 @@ export default function Market() {
         <TallCard
           img="https://images.unsplash.com/photo-1523367438061-01c055ce790c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
           title="Rs. 3000"
-          subtitle="Hand Painted Pots"></TallCard>
+          subtitle="Hand Painted Pots"
+          rating={3.2}
+          rateCount={256}></TallCard>
 
         <TallCard
           img="https://images.unsplash.com/photo-1523367438061-01c055ce790c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
           title="Rs. 3000"
-          subtitle="Hand Painted Pots"></TallCard>
+          subtitle="Hand Painted Pots"
+          rating={1.5}
+          rateCount={72}></TallCard>
 
         <TallCard
           img="https://images.unsplash.com/photo-1523367438061-01c055ce790c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
           title="Rs. 3000"
-          subtitle="Hand Painted Pots"></TallCard>
+          subtitle="Hand Painted Pots"
+          rating={5}
+          rateCount={96}></TallCard>
 
         <TallCard
           img="https://images.unsplash.com/photo-1523367438061-01c055ce790c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
           title="Rs. 3000"
-          subtitle="Hand Painted Pots"></TallCard>
+          subtitle="Hand Painted Pots"
+          rating={2.3}
+          rateCount={175}></TallCard>
       </div>
     </motion.div>
   )

@@ -7,8 +7,20 @@ import {
   MagnifyingGlass
 } from '@phosphor-icons/react'
 import { Input } from '@mantine/core'
+import { useEffect, useState } from 'react'
+import { getWeather } from '../../api/getWeather'
 
 export default function Home() {
+  const [weather, setWeather] = useState({})
+
+  useEffect(() => {
+    const weather = async () => {
+      const data = await getWeather()
+      setWeather(data)
+    }
+    weather()
+  }, [])
+
   return (
     <div className={styles.home}>
       <div className={styles.home_card}>
@@ -36,19 +48,23 @@ export default function Home() {
           </div>
           <div className={styles.content}>
             <div className={styles.values}>
-              <div className={styles.temperature}>32°C</div>
-              <div className={styles.weather}>Cloudy</div>
+              <div className={styles.temperature}>
+                {weather ? weather?.temp : 'N/A'} °C
+              </div>
+              <div className={styles.weather}>
+                {weather ? weather?.weather : 'No data found'}
+              </div>
               <div className={styles.location}>
                 <div className={styles.location_icon}></div>
               </div>
             </div>
             <div className={styles.weather_icon}>
-              <img src={CloudyIcon} alt="weather icon" />
+              <img src={weather ? weather?.icon : null} alt="weather icon" />
             </div>
           </div>
           <div className={styles.location_name}>
             <MapPin size={16} weight="fill" />
-            <span>Colombo, Western Province</span>
+            <span>{weather ? weather?.location : 'No location found'}</span>
           </div>
         </div>
         <div className={styles.meeting_details}>Upcoming meeting at 2PM.</div>

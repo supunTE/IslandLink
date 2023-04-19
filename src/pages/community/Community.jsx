@@ -9,6 +9,7 @@ import User from './components/User'
 import Question from './components/Question'
 import { useEffect, useState } from 'react'
 import { loadCommunityData } from '../../api/getCommunityData'
+import { motion } from 'framer-motion'
 
 export default function Community() {
   const [posts, setPosts] = useState([])
@@ -17,7 +18,7 @@ export default function Community() {
   useEffect(() => {
     async function loadData() {
       const data = await loadCommunityData()
-      console.log(data)
+      // console.log(data)
 
       const posts = []
 
@@ -64,7 +65,11 @@ export default function Community() {
   }, [])
 
   return (
-    <div className={styles.community}>
+    <motion.div
+      className={styles.community}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}>
       <h1 className={styles.heading}>Community</h1>
       {/* <div className={styles.sliders}>
         <Carousel maw={320} mx="auto" withIndicators height={150}>
@@ -89,6 +94,6 @@ export default function Community() {
       </div>
 
       <div className={styles.social_content}>{postsDom}</div>
-    </div>
+    </motion.div>
   )
 }

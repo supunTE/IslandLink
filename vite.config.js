@@ -9,6 +9,7 @@ export default defineConfig({
       manifest: {
         name: 'Island Link',
         short_name: 'Island Link',
+        version: '1.0',
         description:
           'Connect, explore, and work remotely in paradise with IslandLink - superapp for digital nomads in Sri Lanka',
         start_url: '/',

@@ -7,26 +7,51 @@ import {
   MagnifyingGlass
 } from '@phosphor-icons/react'
 import { Input } from '@mantine/core'
+import { useEffect, useState } from 'react'
+import { getWeather } from '../../api/getWeather'
+import { NavLink } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 export default function Home() {
+  const [weather, setWeather] = useState({
+    temp: 30,
+    weather: 'Cloudy',
+    icon: CloudyIcon,
+    location: 'Colombo, Western'
+  })
+
+  useEffect(() => {
+    const weather = async () => {
+      const data = await getWeather()
+      setWeather(data)
+    }
+    weather()
+  }, [])
+
   return (
-    <div className={styles.home}>
+    <motion.div
+      className={styles.home}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}>
       <div className={styles.home_card}>
         <div className={styles.weather_card}>
           <div className={styles.top_bar}>
-            <div className={styles.user}>
-              <div className={styles.user_avatar}>
-                <div className={styles.user_avatar_img}>
-                  <img
-                    src="https://images.unsplash.com/photo-1624530460643-b0aa24cc02b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-                    alt="user avatar"
-                  />
-                </div>
-                <div className={styles.settings_icon}>
-                  <Gear size={20} />
+            <NavLink to="/settings">
+              <div className={styles.user}>
+                <div className={styles.user_avatar}>
+                  <div className={styles.user_avatar_img}>
+                    <img
+                      src="https://images.unsplash.com/photo-1624530460643-b0aa24cc02b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                      alt="user avatar"
+                    />
+                  </div>
+                  <div className={styles.settings_icon}>
+                    <Gear size={20} />
+                  </div>
                 </div>
               </div>
-            </div>
+            </NavLink>
             <div className={styles.alert}>
               <div className={styles.alert_icon}>
                 <BellRinging size={20} weight="fill" />
@@ -36,19 +61,26 @@ export default function Home() {
           </div>
           <div className={styles.content}>
             <div className={styles.values}>
-              <div className={styles.temperature}>32°C</div>
-              <div className={styles.weather}>Cloudy</div>
+              <div className={styles.temperature}>
+                {weather ? weather?.temp : 'N/A'} °C
+              </div>
+              <div className={styles.weather}>
+                {weather ? weather?.weather : 'No data found'}
+              </div>
               <div className={styles.location}>
                 <div className={styles.location_icon}></div>
               </div>
             </div>
             <div className={styles.weather_icon}>
-              <img src={CloudyIcon} alt="weather icon" />
+              <img
+                src={weather ? weather?.icon : CloudyIcon}
+                alt="weather icon"
+              />
             </div>
           </div>
           <div className={styles.location_name}>
             <MapPin size={16} weight="fill" />
-            <span>Colombo, Western Province</span>
+            <span>{weather ? weather?.location : 'No location found'}</span>
           </div>
         </div>
         <div className={styles.meeting_details}>Upcoming meeting at 2PM.</div>
@@ -93,6 +125,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

@@ -8,6 +8,7 @@ import TallCard from '../../components/TallCard'
 import styles from './search.module.scss'
 import { getDistance } from '../../api/getDistance'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 export default function Search() {
   const navigate = useNavigate()
@@ -185,7 +186,11 @@ export default function Search() {
   }
 
   return (
-    <div className={styles.search}>
+    <motion.div
+      className={styles.search}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}>
       <h1 className={styles.heading}>Search</h1>
 
       <Input
@@ -229,6 +234,6 @@ export default function Search() {
       ) : (
         <div className={styles.search_results_content}>{searchResultCards}</div>
       )}
-    </div>
+    </motion.div>
   )
 }

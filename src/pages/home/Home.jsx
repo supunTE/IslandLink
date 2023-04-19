@@ -10,9 +10,15 @@ import { Input } from '@mantine/core'
 import { useEffect, useState } from 'react'
 import { getWeather } from '../../api/getWeather'
 import { NavLink } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 export default function Home() {
-  const [weather, setWeather] = useState({})
+  const [weather, setWeather] = useState({
+    temp: 30,
+    weather: 'Cloudy',
+    icon: CloudyIcon,
+    location: 'Colombo, Western'
+  })
 
   useEffect(() => {
     const weather = async () => {
@@ -23,7 +29,11 @@ export default function Home() {
   }, [])
 
   return (
-    <div className={styles.home}>
+    <motion.div
+      className={styles.home}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}>
       <div className={styles.home_card}>
         <div className={styles.weather_card}>
           <div className={styles.top_bar}>
@@ -62,7 +72,10 @@ export default function Home() {
               </div>
             </div>
             <div className={styles.weather_icon}>
-              <img src={weather ? weather?.icon : null} alt="weather icon" />
+              <img
+                src={weather ? weather?.icon : CloudyIcon}
+                alt="weather icon"
+              />
             </div>
           </div>
           <div className={styles.location_name}>
@@ -112,6 +125,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

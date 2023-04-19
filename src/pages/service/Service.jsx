@@ -9,6 +9,7 @@ import { PlusCircle, MapTrifold, ForkKnife } from '@phosphor-icons/react'
 import { getComments, loadOneService, requestLocation } from '../../api'
 import { useDisclosure } from '@mantine/hooks'
 import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
 export default function Service() {
   const { id } = useParams()
@@ -71,7 +72,12 @@ export default function Service() {
   ))
 
   return (
-    <div className={styles.service}>
+    <motion.div
+      className={styles.service}
+      transition={{ type: 'tween', duration: 0.2 }}
+      initial={{ x: '120vw' }}
+      animate={{ x: 0 }}
+      exit={{ x: '120vw' }}>
       {visible && (
         <div className={styles.loader}>
           <LoadingOverlay visible={visible} overlayBlur={2} />
@@ -121,6 +127,6 @@ export default function Service() {
       </div>
 
       <div className={styles.reviews}>{comments}</div>
-    </div>
+    </motion.div>
   )
 }

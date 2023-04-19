@@ -1,7 +1,7 @@
 import { getCords } from './getUserCords'
 
 export async function requestLocation(long = 0, lat = 0) {
-  console.log('requestLocation', lat, long)
+  // console.log('requestLocation', lat, long)
   try {
     let userCords
     if (lat && long) {

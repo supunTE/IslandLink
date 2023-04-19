@@ -1,23 +1,26 @@
 // import Post from "./components/Post";
 
 import styles from './community.module.scss'
-import { Carousel } from '@mantine/carousel'
-import { Input } from '@mantine/core'
+// import { Carousel } from '@mantine/carousel'
+import { Input, LoadingOverlay } from '@mantine/core'
 import { MagnifyingGlass } from '@phosphor-icons/react'
 import Post from './components/Post'
 import User from './components/User'
 import Question from './components/Question'
 import { useEffect, useState } from 'react'
 import { loadCommunityData } from '../../api/getCommunityData'
+import { motion } from 'framer-motion'
+import { useDisclosure } from '@mantine/hooks'
 
 export default function Community() {
   const [posts, setPosts] = useState([])
   const [postsDom, setPostsDom] = useState([])
+  const [visible, { toggle }] = useDisclosure(true)
 
   useEffect(() => {
     async function loadData() {
       const data = await loadCommunityData()
-      console.log(data)
+      // console.log(data)
 
       const posts = []
 
@@ -59,12 +62,22 @@ export default function Community() {
       })
 
       setPosts(data)
+      toggle()
     }
     loadData()
   }, [])
 
   return (
-    <div className={styles.community}>
+    <motion.div
+      className={styles.community}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}>
+      {visible && (
+        <div className={styles.loader}>
+          <LoadingOverlay visible={visible} overlayBlur={2} />
+        </div>
+      )}
       <h1 className={styles.heading}>Community</h1>
       {/* <div className={styles.sliders}>
         <Carousel maw={320} mx="auto" withIndicators height={150}>
@@ -89,6 +102,6 @@ export default function Community() {
       </div>
 
       <div className={styles.social_content}>{postsDom}</div>
-    </div>
+    </motion.div>
   )
 }

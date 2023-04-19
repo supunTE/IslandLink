@@ -2,8 +2,8 @@
 
 import styles from './community.module.scss'
 // import { Carousel } from '@mantine/carousel'
-import { Input, LoadingOverlay } from '@mantine/core'
-import { MagnifyingGlass } from '@phosphor-icons/react'
+import { Input, LoadingOverlay, ThemeIcon } from '@mantine/core'
+import { MagnifyingGlass, Plus } from '@phosphor-icons/react'
 import Post from './components/Post'
 import User from './components/User'
 import Question from './components/Question'
@@ -106,6 +106,9 @@ export default function Community() {
       </div>
 
       <div className={styles.social_content}>{postsDom}</div>
+      <ThemeIcon radius="xl" size="xl" className="add_icon">
+        <Plus weight="bold" />
+      </ThemeIcon>
     </motion.div>
   )
 }

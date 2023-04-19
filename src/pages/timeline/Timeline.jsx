@@ -1,8 +1,8 @@
 import styles from './timeline.module.scss'
-import { LoadingOverlay } from '@mantine/core'
+import { LoadingOverlay, ThemeIcon } from '@mantine/core'
 import Card from './components/Card'
 import Imgcard from './components/Imgcard'
-import { ListBullets, CalendarBlank } from '@phosphor-icons/react'
+import { ListBullets, CalendarBlank, Plus } from '@phosphor-icons/react'
 import { useDisclosure } from '@mantine/hooks'
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
@@ -65,6 +65,9 @@ export default function Timeline() {
           desc="Travel to Galle"
           time="10.00 am"></Imgcard>
       </div>
+      <ThemeIcon radius="xl" size="xl" className="add_icon">
+        <Plus weight="bold" />
+      </ThemeIcon>
     </motion.div>
   )
 }

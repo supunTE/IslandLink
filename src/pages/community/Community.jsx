@@ -17,7 +17,7 @@ export default function Community() {
   useEffect(() => {
     async function loadData() {
       const data = await loadCommunityData()
-      console.log(data)
+      // console.log(data)
 
       const posts = []
 

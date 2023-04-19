@@ -26,7 +26,7 @@ export default function Market() {
         const userLocation = await getUserLocation(userCords[0], userCords[1])
         setUserCity(userLocation)
       } catch (error) {
-        console.log(error)
+        // console.log(error)
       }
     }
     takeLocation()

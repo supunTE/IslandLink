@@ -9,6 +9,7 @@ import {
 import { Input } from '@mantine/core'
 import { useEffect, useState } from 'react'
 import { getWeather } from '../../api/getWeather'
+import { NavLink } from 'react-router-dom'
 
 export default function Home() {
   const [weather, setWeather] = useState({})
@@ -26,19 +27,21 @@ export default function Home() {
       <div className={styles.home_card}>
         <div className={styles.weather_card}>
           <div className={styles.top_bar}>
-            <div className={styles.user}>
-              <div className={styles.user_avatar}>
-                <div className={styles.user_avatar_img}>
-                  <img
-                    src="https://images.unsplash.com/photo-1624530460643-b0aa24cc02b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-                    alt="user avatar"
-                  />
-                </div>
-                <div className={styles.settings_icon}>
-                  <Gear size={20} />
+            <NavLink to="/settings">
+              <div className={styles.user}>
+                <div className={styles.user_avatar}>
+                  <div className={styles.user_avatar_img}>
+                    <img
+                      src="https://images.unsplash.com/photo-1624530460643-b0aa24cc02b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                      alt="user avatar"
+                    />
+                  </div>
+                  <div className={styles.settings_icon}>
+                    <Gear size={20} />
+                  </div>
                 </div>
               </div>
-            </div>
+            </NavLink>
             <div className={styles.alert}>
               <div className={styles.alert_icon}>
                 <BellRinging size={20} weight="fill" />

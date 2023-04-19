@@ -81,24 +81,24 @@ export default function Market() {
 
       <div className={styles.content}>
         <TallCard
-          img="https://images.unsplash.com/photo-1523367438061-01c055ce790c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
-          title="Rs. 3000"
-          subtitle="Hand Painted Pots"></TallCard>
+          img="https://images.pexels.com/photos/6243342/pexels-photo-6243342.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          title="Rs. 10000"
+          subtitle="Hand Painted Items"></TallCard>
 
         <TallCard
           img="https://images.unsplash.com/photo-1523367438061-01c055ce790c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
-          title="Rs. 3000"
+          title="Rs. 8000"
           subtitle="Hand Painted Pots"></TallCard>
 
         <TallCard
-          img="https://images.unsplash.com/photo-1523367438061-01c055ce790c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
-          title="Rs. 3000"
-          subtitle="Hand Painted Pots"></TallCard>
+          img="https://images.pexels.com/photos/4610857/pexels-photo-4610857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          title="Rs. 12500"
+          subtitle="Bathik cloths"></TallCard>
 
         <TallCard
-          img="https://images.unsplash.com/photo-1523367438061-01c055ce790c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
-          title="Rs. 3000"
-          subtitle="Hand Painted Pots"></TallCard>
+          img="https://images.pexels.com/photos/6769966/pexels-photo-6769966.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          title="Rs. 5000"
+          subtitle="Local items"></TallCard>
       </div>
     </motion.div>
   )

@@ -42,10 +42,19 @@
 
 .title {
   @include fonts.title-medium;
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
 }
 
 .heading {
   @include fonts.heading-large;
   color: colors.$black;
   padding-bottom: 0.75rem;
+}
+
+.icons {
+  display: flex;
+  gap: 1em;
+  flex-direction: row;
 }

@@ -1,6 +1,7 @@
 import styles from './timeline.module.scss'
-import Card from './components/card'
+import Card from './components/Card'
 import Imgcard from './components/Imgcard'
+import { ListBullets, CalendarBlank } from '@phosphor-icons/react'
 
 export default function Timeline() {
   return (
@@ -8,8 +9,14 @@ export default function Timeline() {
       <h1 className={styles.heading}>Timeline</h1>
       <div className={styles.title}>
         <div>New Journey</div>
-        {/* <div></div>
-        <div></div> */}
+        <div className={styles.icons}>
+          <div>
+            <ListBullets size={20} />
+          </div>
+          <div>
+            <CalendarBlank size={20} />
+          </div>
+        </div>
       </div>
 
       <div className={styles.timeline}>

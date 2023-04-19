@@ -44,7 +44,11 @@ export default function Market() {
       exit={{ opacity: 0 }}>
       {visible && (
         <div className={styles.loader}>
-          <LoadingOverlay visible={visible} overlayBlur={2} />
+          <LoadingOverlay
+            visible={visible}
+            overlayBlur={2}
+            loaderProps={{ color: '#028090' }}
+          />
         </div>
       )}
       <h1 className={styles.heading}>Market</h1>
@@ -66,7 +70,6 @@ export default function Market() {
           radius="xl"
           size="xs"
           data={[
-            { value: 'distance', label: 'Distance' },
             { value: 'price', label: 'Price' },
             { value: 'rating', label: 'Rating' }
           ]}
@@ -83,22 +86,30 @@ export default function Market() {
         <TallCard
           img="https://images.pexels.com/photos/6243342/pexels-photo-6243342.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           title="Rs. 10000"
-          subtitle="Hand Painted Items"></TallCard>
+          subtitle="Hand Painted Items"
+          rating={1.5}
+          rateCount={72}></TallCard>
 
         <TallCard
           img="https://images.unsplash.com/photo-1523367438061-01c055ce790c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
           title="Rs. 8000"
-          subtitle="Hand Painted Pots"></TallCard>
+          subtitle="Hand Painted Pots"
+          rating={5}
+          rateCount={96}></TallCard>
 
         <TallCard
           img="https://images.pexels.com/photos/4610857/pexels-photo-4610857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           title="Rs. 12500"
-          subtitle="Bathik cloths"></TallCard>
+          subtitle="Bathik cloths"
+          rating={2.3}
+          rateCount={175}></TallCard>
 
         <TallCard
           img="https://images.pexels.com/photos/6769966/pexels-photo-6769966.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           title="Rs. 5000"
-          subtitle="Local items"></TallCard>
+          subtitle="Local items"
+          rating={3.2}
+          rateCount={256}></TallCard>
       </div>
     </motion.div>
   )

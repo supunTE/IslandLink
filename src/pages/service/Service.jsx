@@ -80,7 +80,11 @@ export default function Service() {
       exit={{ x: '120vw' }}>
       {visible && (
         <div className={styles.loader}>
-          <LoadingOverlay visible={visible} overlayBlur={2} />
+          <LoadingOverlay
+            visible={visible}
+            overlayBlur={2}
+            loaderProps={{ color: '#028090' }}
+          />
         </div>
       )}
       <div className={styles.carousel_container}>

@@ -198,7 +198,11 @@ export default function Search() {
       <h1 className={styles.heading}>Search</h1>
       {visible && (
         <div className={styles.loader}>
-          <LoadingOverlay visible={visible} overlayBlur={2} />
+          <LoadingOverlay
+            visible={visible}
+            overlayBlur={2}
+            loaderProps={{ color: '#028090' }}
+          />
         </div>
       )}
 

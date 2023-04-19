@@ -7,6 +7,7 @@ import Search from './pages/search/Search'
 import Market from './pages/market/Market'
 import Service from './pages/service/Service'
 import Upload from './pages/upload/Upload'
+import Timeline from './pages/timeline/Timeline'
 import { AnimatePresence } from 'framer-motion'
 
 export default function Router() {
@@ -22,6 +23,7 @@ export default function Router() {
         <Route path="/market" element={<Market />} />
         <Route path="/service/:id" element={<Service />} />
         <Route path="/upload" element={<Upload />} />
+        <Route path="/timeline" element={<Timeline />} />
       </Routes>
     </AnimatePresence>
   )

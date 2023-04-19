@@ -1,0 +1,60 @@
+@use '../../scss/colors.scss';
+@use '../../scss/fonts.scss';
+@use '../../scss/animation.scss';
+
+.timeline {
+  padding: 0.8rem;
+}
+
+.daycard {
+  @include fonts.title-medium;
+  color: colors.$dark-grey;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  width: 100%;
+  color: colors.$dark-grey;
+}
+
+.day {
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+  @include fonts.title-medium;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.card {
+  @include fonts.paragraph-small;
+  border: colors.$dark-grey 0.5px solid;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+  gap: 1em;
+}
+
+.title {
+  @include fonts.title-medium;
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+}
+
+.heading {
+  @include fonts.heading-large;
+  color: colors.$black;
+  padding-bottom: 0.75rem;
+}
+
+.icons {
+  display: flex;
+  gap: 1em;
+  flex-direction: row;
+}

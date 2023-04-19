@@ -21,7 +21,11 @@ export default function Timeline() {
       exit={{ opacity: 0 }}>
       {visible && (
         <div className={styles.loader}>
-          <LoadingOverlay visible={visible} overlayBlur={2} />
+          <LoadingOverlay
+            visible={visible}
+            overlayBlur={2}
+            loaderProps={{ color: '#028090' }}
+          />
         </div>
       )}
       <h1 className={styles.heading}>Timeline</h1>

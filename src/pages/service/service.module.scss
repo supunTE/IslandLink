@@ -21,6 +21,7 @@
   z-index: 1000;
 
   & > svg {
+    stroke: colors.$ocean;
     position: absolute;
     top: 50%;
     left: 50%;

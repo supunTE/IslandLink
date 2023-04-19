@@ -44,7 +44,11 @@ export default function Market() {
       exit={{ opacity: 0 }}>
       {visible && (
         <div className={styles.loader}>
-          <LoadingOverlay visible={visible} overlayBlur={2} />
+          <LoadingOverlay
+            visible={visible}
+            overlayBlur={2}
+            loaderProps={{ color: '#028090' }}
+          />
         </div>
       )}
       <h1 className={styles.heading}>Market</h1>

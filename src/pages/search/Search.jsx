@@ -1,4 +1,4 @@
-import { Input, Select } from '@mantine/core'
+import { Input, Select, LoadingOverlay } from '@mantine/core'
 import { MagnifyingGlass, MapPin } from '@phosphor-icons/react'
 import { useEffect, useState } from 'react'
 import { loadServicesDocs, requestLocation } from '../../api'
@@ -9,8 +9,11 @@ import styles from './search.module.scss'
 import { getDistance } from '../../api/getDistance'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useDisclosure } from '@mantine/hooks'
 
 export default function Search() {
+  const [visible, { toggle }] = useDisclosure(true)
+
   const navigate = useNavigate()
   const [searchValue, setSearchValue] = useState('')
 
@@ -60,6 +63,7 @@ export default function Search() {
           return newServices
         })
       }
+      toggle()
     }
     loadData()
   }, [])
@@ -192,6 +196,11 @@ export default function Search() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}>
       <h1 className={styles.heading}>Search</h1>
+      {visible && (
+        <div className={styles.loader}>
+          <LoadingOverlay visible={visible} overlayBlur={2} />
+        </div>
+      )}
 
       <Input
         icon={<MagnifyingGlass size={14} />}

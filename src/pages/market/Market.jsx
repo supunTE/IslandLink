@@ -1,12 +1,14 @@
-import { Input, Select } from '@mantine/core'
+import { Input, LoadingOverlay, Select } from '@mantine/core'
 import { MagnifyingGlass, MapPin } from '@phosphor-icons/react'
 import { useEffect, useState } from 'react'
 import Filter from '../../components/Filter'
 import TallCard from '../../components/TallCard'
 import styles from './market.module.scss'
 import { motion } from 'framer-motion'
+import { useDisclosure } from '@mantine/hooks'
 
 export default function Market() {
+  const [visible, { toggle }] = useDisclosure(true)
   const [searchValue, setSearchValue] = useState('')
 
   const [filterElements, _setFilterElements] = useState([
@@ -29,6 +31,7 @@ export default function Market() {
       } catch (error) {
         // console.log(error)
       }
+      toggle()
     }
     takeLocation()
   }, [])
@@ -39,6 +42,11 @@ export default function Market() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}>
+      {visible && (
+        <div className={styles.loader}>
+          <LoadingOverlay visible={visible} overlayBlur={2} />
+        </div>
+      )}
       <h1 className={styles.heading}>Market</h1>
 
       <Input
